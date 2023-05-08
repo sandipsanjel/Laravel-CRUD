@@ -33,12 +33,20 @@ Route::get('/' ,[DemoController::class,'home' ]);
 
 Route::resource('/index' ,sharkController::class);//for Resourse controller where we can do crud operations
 
-// Route::get('/customers', function () {
-// $Customers= customer::all();
-// echo "<pre>";
-// print_r($Customers);
+//to get ti datae of the customers in browser
+Route::get('/customers', function () {
+$Customers= customer::all();
+echo "<pre>";
+print_r($Customers);
 
-// });
+});
 
-Route::get('/customers' ,[CustomerController:: class,'create']);
+
+//insert into database
+Route::get('/customers/create' ,[CustomerController:: class,'create']);
 Route::post('/customers' ,[CustomerController:: class,'store']);
+
+//read //selection
+Route::get('/view' ,[CustomerController:: class,'view']);
+
+

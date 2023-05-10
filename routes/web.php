@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\sharkController;
 use App\Http\Controllers\SingleActionController;
@@ -19,15 +20,18 @@ use App\Models\Customer;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+// for routing through 
+Route::get('/register',[RegistrationController::class,'index']);
+Route::post('/register',[RegistrationController::class,'register']);
 
 
 // Route:: get('/home', function() {
 //     return view ('home');
 // });
 
-Route::get('/' ,[DemoController::class,'home' ]);
+// Route::get('/' ,[DemoController::class,'index' ]);
 
  Route::get('/index',SingleActionController::class); //this method is for the singleactioncontroller whre only one function is invoke 
 
@@ -43,7 +47,7 @@ print_r($Customers);
 
 
 //insert into database
-Route::get('/customers/create' ,[CustomerController:: class,'create']);
+Route::get('/customers/create' ,[CustomerController:: class,'create'])->name('customer.create');
 Route::post('/customers' ,[CustomerController:: class,'store']);
 
 //read //selection

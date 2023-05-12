@@ -47,10 +47,20 @@ print_r($Customers);
 
 
 //insert into database
-Route::get('/customers/create' ,[CustomerController:: class,'create'])->name('customer.create');
-Route::post('/customers' ,[CustomerController:: class,'store']);
+Route::get('/customer/create' ,[CustomerController:: class,'create'])->name('customer.create');
+//to post in database 
+Route::post('/customer' ,[CustomerController:: class,'store']);
+//read //selection section
+Route::get('/customer' ,[CustomerController:: class,'view']);
+//edit update operation
+Route::get('/customer/edit/{id}', [CustomerController:: class,'edit'])->name('customer.edit');
+Route::post('/customer/update/{id}', [CustomerController:: class,'update'])->name('customer.update');
+//To delete 
+Route::get('/customer/delete/{id}', [CustomerController:: class,'delete'])->name('customer.delete');
 
-//read //selection
-Route::get('/view' ,[CustomerController:: class,'view']);
+
+
+
+
 
 

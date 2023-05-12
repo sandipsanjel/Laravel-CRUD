@@ -31,7 +31,7 @@
                             <a class="nav-link" href="{{url('/register')}}" style="color: white">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('/customers/create')}}" style="color: white">Customer</a>
+                            <a class="nav-link" href="{{url('/customer')}}" style="color: white">Customer</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/upload')}}" style="color: white">Upload</a>

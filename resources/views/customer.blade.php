@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title> {{ $title }} </title>
+    <title> {{$title}} </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -49,10 +49,10 @@
     </div>
 
     <body class="bg-dark">
-        <form action="{{ '/customers' }}" method="POST">
+        <form action="{{ $url }}" method="POST">
             @csrf
             <div class="container mt-4 card p-3 bg-white">
-                <h3 class="text-center text-primary">{{ $title }}</h3>
+                <h3 class="text-center text-primary">{{$title}}</h3>
                 <div class="row">
                     <div class="form-group col-md-6 required">
                         <label for="">Name:</label>

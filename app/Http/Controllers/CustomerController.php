@@ -8,19 +8,21 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    public function create(){
-        $url = url('/customers');
+    public function create()
+    {
+        $url = url('/customer');
         $title = "Customer Registration";
-        $data = compact('url','title');
+        $data = compact('url', 'title');
         return view('customer')->with($data);
     }
 
     // public function index(){
     //     return view('/customer');
     // }
-    
 
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
         // $request->validate(
         //     [
         //         'name'=>'required',
@@ -45,24 +47,56 @@ class CustomerController extends Controller
         $customer->state = $request['state'];
         $customer->country = $request['country'];
         $customer->dob = $request['dob'];
-        $customer->password = md5($request['password']);
+        $customer->password = $request['password'];
         $customer->save();
 
-        return redirect('/view');
+        return redirect('/customer');
     }
-    
-//for selection/read operation
-    public function view(){
-        $customers= customer::all();
+
+    //for selection/read operation
+    public function view()
+    {
+        $customers = Customer::all();
 
         // echo "<pre>";
         // print_r($customers);
         // echo "</pre>";
-        
-        $data= compact('customers'); //it makes the the arrya of inilialized variable 
+
+        $data = compact('customers'); //it makes the the arrya of inilialized variable 
         return view('customer-view')->with($data);
-        
+    }
+    public function delete($id)
+    {
+        $customer = customer::find($id); //here it find from model wherer we have suppose  protected $primarykey="customer_id";
+        if (!is_null($customer)) { //this is the condition to check if customer is null or not  
+            $customer->delete();
+            return redirect('customer');
+        }
+    }
+    public function edit($id)
+    {
+        $customer = Customer::find($id);
+        $url = url('/customer/update') . "/" . $id;
+        $title = "Update Customer";
+        $data = compact('customer', 'url', 'title');
+        return view('customer')->with($data);
+    }
+    public function update($id, Request $request)
+    {
+        // update Query
+        // prx($request->all(()));
+        $customer = customer::find($id);
+        if (!is_null($customer)) {
+            $customer->user_name = $request['name'];
+            $customer->email = $request['email'];
+            $customer->gender = $request['gender'];
+            $customer->address = $request['address'];
+            $customer->state = $request['state'];
+            $customer->country = $request['country'];
+            $customer->dob = $request['dob'];
+            $customer->password = md5($request['password']);
+            $customer->save();
+        }
+        return redirect('/customer');
     }
 }
-
-

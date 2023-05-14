@@ -58,8 +58,15 @@ Route::post('/customer/update/{id}', [CustomerController:: class,'update'])->nam
 //To delete 
 Route::get('/customer/delete/{id}', [CustomerController:: class,'delete'])->name('customer.delete');
 
+//for session
+
+// Route::get('/get-all-session', function(){
+//     $session = session()->all(); //seesion is global variable that access the all data
+
+// return view('customer');
 
 
+// });
 
 
 

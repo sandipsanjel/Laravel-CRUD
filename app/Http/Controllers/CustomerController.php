@@ -58,9 +58,13 @@ class CustomerController extends Controller
     {
         $customers = Customer::all();
 
+         
+        // prx($customers->toArray());
+        // prx(json_encode($customers->toArray()));
+
         // echo "<pre>";
-        // print_r($customers);
-        // echo "</pre>";
+        // print_r($customers->toArray());
+        // die();
 
         $data = compact('customers'); //it makes the the arrya of inilialized variable 
         return view('customer-view')->with($data);
@@ -84,7 +88,7 @@ class CustomerController extends Controller
     public function update($id, Request $request)
     {
         // update Query
-        // prx($request->all(()));
+        // prx($request->all());
         $customer = customer::find($id);
         if (!is_null($customer)) {
             $customer->user_name = $request['name'];

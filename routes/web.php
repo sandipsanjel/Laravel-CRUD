@@ -7,6 +7,9 @@ use App\Http\Controllers\sharkController;
 use App\Http\Controllers\SingleActionController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Customer;
+use Illuminate\Http\Request;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -60,14 +63,19 @@ Route::get('/customer/delete/{id}', [CustomerController:: class,'delete'])->name
 
 //for session
 
-// Route::get('/get-all-session', function(){
-//     $session = session()->all(); //seesion is global variable that access the all data
+Route::get('/get-all-session', function(){
+    $session = session()->all(); //seesion is global function that access the all data
+ p($session); 
 
-// return view('customer');
+
+});
 
 
-// });
-
+Route::get('set-session',function ( Request $request) {
+$request->session()-> put('user_name','sandip sanjel');
+$request->session()->put('user_id','45687');
+return redirect('get-all-session');
+});
 
 
 

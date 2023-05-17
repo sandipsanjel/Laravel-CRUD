@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RegistrationController;
-use App\Http\Controllers\DemoController;
+// use App\Http\Controllers\DemoController;
 use App\Http\Controllers\sharkController;
 use App\Http\Controllers\SingleActionController;
 use Illuminate\Support\Facades\Route;

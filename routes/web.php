@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RegistrationController;
-// use App\Http\Controllers\DemoController;
+use App\Http\Controllers\DemoController;
 use App\Http\Controllers\sharkController;
 use App\Http\Controllers\SingleActionController;
 use Illuminate\Support\Facades\Route;
@@ -72,8 +72,8 @@ Route::get('/get-all-session', function(){
 
 
 Route::get('set-session',function ( Request $request) {
-$request->session()-> put('user_name','sandip sanjel');
-$request->session()->put('user_id','45687');
+$request->session()-> put('user_name','manish timalshina');
+$request->session()->put('user_id','345345345');
 return redirect('get-all-session');
 });
 

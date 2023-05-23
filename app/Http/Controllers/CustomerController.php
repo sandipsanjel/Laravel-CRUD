@@ -36,7 +36,7 @@ class CustomerController extends Controller
         // );
 
         // p($request->all());
-        die;
+        // die;
         $customer = new Customer;
         $customer->user_name = $request['name'];
         $customer->email = $request['email'];

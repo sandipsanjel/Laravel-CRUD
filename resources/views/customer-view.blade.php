@@ -98,10 +98,10 @@
                         </td>
                         <td>
                             {{-- <a href="{{ url('/customer/delete/') }}/{{$customer->customer_id}}">  --}}
-                                <a href="{{ route('customer.delete', ['id' => $customer->customers_id]) }}">
+                                <a href="{{ route('customer.delete', ['id' => $customer->customer_id]) }}">
                                     <button class="btn btn-danger">Trash</button>
                                 {{-- <a href="{{'customer/delcust/{id}'.$customer->customer_id}}">Delete</a> --}}
-                            <a href="{{ route('customer.edit', ['id' => $customer->customers_id]) }}">
+                            <a href="{{ route('customer.edit', ['id' => $customer->customer_id]) }}">
                                 <button class="btn btn-primary">Edit</button>
                             </a>  
                         </td>

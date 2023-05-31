@@ -75,14 +75,29 @@ class CustomerController extends Controller
             return redirect('customer');
         }
     }
-    public function edit($id)
-    {
+    // public function edit($id)
+    // {
+    //     $customer = Customer::find($id);
+    //     $url = url('/customer/update') . "/" . $id;
+    //     $title = "Update Customer";
+    //     $data = compact('customer', 'url', 'title');
+    //     return view('customer')->with($data);
+    // }
+
+    public function edit($id){
         $customer = Customer::find($id);
-        $url = url('/customer/update') . "/" . $id;
-        $title = "Update Customer";
-        $data = compact('customer', 'url', 'title');
-        return view('customer')->with($data);
+        if(is_null($customer)){
+           // not found 
+           return redirect('/customer');
+        }else{
+            // found
+            $url = url('/customer/update') ."/". $id;
+            $title = "Update Customer";
+            $data = compact('customer','url','title');
+            return view('customer')->with($data);
+        }
     }
+
     public function update($id, Request $request)
     {
         // update Query

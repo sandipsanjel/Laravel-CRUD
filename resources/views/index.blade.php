@@ -16,7 +16,7 @@
     <div class="container-fluid bg-dark">
         <div class="container">
             <nav class="navbar navbar-expand-sm">
-                <a class="navbar-brand" href="{{url('/')}}" style="color: white">Welcome To Laravel Project </a>
+                <a class="navbar-brand" href="{{url('/')}}" style="color: white">Online Shoping website </a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                     data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -41,6 +41,17 @@
             </nav>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -52,6 +63,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+
+
+
+
 </body>
 
 </html>

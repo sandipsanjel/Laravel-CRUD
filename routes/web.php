@@ -5,6 +5,7 @@ use App\Http\Controllers\RegistrationController;
 // use App\Http\Controllers\DemoController;
 use App\Http\Controllers\sharkController;
 use App\Http\Controllers\SingleActionController;
+use App\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Customer;
 use Illuminate\Http\Request;

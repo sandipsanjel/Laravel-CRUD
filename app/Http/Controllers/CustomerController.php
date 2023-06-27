@@ -4,39 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customer;
-
+use Illuminate\Support\Facades\Redirect;
 
 class CustomerController extends Controller
 {
-    public function create()
-    {
+
+    public function create(){
         $url = url('/customer');
-        $title = "Customer Registration";
-        $data = compact('url', 'title');
+        $title = "Customer Registartion";
+        $data = compact('url','title');
         return view('customer')->with($data);
     }
 
-    // public function index(){
-    //     return view('/customer');
-    // }
+    public function store(Request $request){
+        $request->validate(
+            [
+                'name'=>'required',
+                'email'=>'required|email',
+                'password'=>'required|confirmed',
+                'password_confirmation'=>'required',
+                'country'=>'required',
+                'state'=>'required'                
+            ]
+        );
 
+        // echo "<pre>";
+        // print_r($request->all());
 
-    public function store(Request $request)
-    {
-        // $request->validate(
-        //     [
-        //         'name'=>'required',
-        //         'email'=>'required|email',
-        //         'password'=>'required|confirmed',
-        //         'password_confirmation'=>'required',
-        //         'country'=>'required',
-        //         'state'=>'required' ,               
-        //         'address'=>'address'                
-        //     ]
-        // );
-
-        // p($request->all());
-        // die;
+        //Insert Query
         $customer = new Customer;
         $customer->user_name = $request['name'];
         $customer->email = $request['email'];
@@ -45,44 +40,54 @@ class CustomerController extends Controller
         $customer->state = $request['state'];
         $customer->country = $request['country'];
         $customer->dob = $request['dob'];
-        $customer->password = $request['password'];
+        $customer->password = md5($request['password']);
         $customer->save();
 
         return redirect('/customer');
     }
 
-    //for selection/read operation
-    public function view()
-    {
+    public function view(){
         $customers = Customer::all();
-
-         
-        // prx($customers->toArray());
-        // prx(json_encode($customers->toArray()));
+        
+        //prx($customers->toArray());
+        //prx(json_encode($customers->toArray()));
 
         // echo "<pre>";
         // print_r($customers->toArray());
         // die();
-
-        $data = compact('customers'); //it makes the the arrya of inilialized variable 
+        $data = compact('customers');
         return view('customer-view')->with($data);
     }
-    public function delete($id)
-    {
-        $customer = customer::find($id); //here it find from model wherer we have suppose  protected $primarykey="customer_id";
-        if (!is_null($customer)) { //this is the condition to check if customer is null or not  
-            $customer->delete();
-            return redirect('customer');
-        }
+    public function trash(){
+        $customers = Customer::onlyTrashed()->get();
+        
+        $data = compact('customers');
+        return view('customer-trash')->with($data);
     }
-    // public function edit($id)
-    // {
-    //     $customer = Customer::find($id);
-    //     $url = url('/customer/update') . "/" . $id;
-    //     $title = "Update Customer";
-    //     $data = compact('customer', 'url', 'title');
-    //     return view('customer')->with($data);
-    // }
+
+    public function delete($id){
+        $customer = Customer::find($id);
+        if(!is_null($customer)){
+            $customer->delete();
+        }
+        return redirect('/customer');
+    }
+
+    public function restore($id){
+        $customer = Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->restore();
+        }
+        return redirect('/customer');
+    }
+
+    public function forceDelete($id){
+        $customer = Customer::withTrashed()->find($id);
+        if(!is_null($customer)){
+            $customer->forceDelete();
+        }
+        return redirect('/customer');
+    }
 
     public function edit($id){
         $customer = Customer::find($id);
@@ -98,12 +103,11 @@ class CustomerController extends Controller
         }
     }
 
-    public function update($id, Request $request)
-    {
-        // update Query
+    public function update($id,Request $request){
+        //Update Query
         // prx($request->all());
-        $customer = customer::find($id);
-        if (!is_null($customer)) {
+        $customer = Customer::find($id);
+        if(!is_null($customer)){
             $customer->user_name = $request['name'];
             $customer->email = $request['email'];
             $customer->gender = $request['gender'];
@@ -112,7 +116,7 @@ class CustomerController extends Controller
             $customer->country = $request['country'];
             $customer->dob = $request['dob'];
             $customer->password = md5($request['password']);
-            $customer->save();
+            $customer->save();          
         }
         return redirect('/customer');
     }

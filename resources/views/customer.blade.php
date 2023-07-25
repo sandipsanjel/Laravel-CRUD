@@ -25,7 +25,7 @@
     <div class="container-fluid bg-dark">
         <div class="container">
             <nav class="navbar navbar-expand-sm">
-                <a class="navbar-brand" href="{{ url('/') }}" style="color: white">Online shoping</a>
+                <a class="navbar-brand" href="{{ url('/') }}" style="color: white">Customer management</a>
                 <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                     data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
                             <a class="nav-link" href="{{ url('/register') }}" style="color: white">Register</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/customer') }}" style="color: white">Customer</a>
+                            <a class="nav-link" href="{{ url('/customer') }}" style="color: white">Customer list</a>
                         </li>
                     </ul>
                 </div>

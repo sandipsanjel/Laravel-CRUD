@@ -42,12 +42,12 @@ Route::post('/register',[RegistrationController::class,'register']);
 Route::resource('/index' ,sharkController::class);//for Resourse controller where we can do crud operations
 
 //to get ti datae of the customers in browser
-Route::get('/customers', function () {
-$Customers= customer::all();
-echo "<pre>";
-print_r($Customers);
+// Route::get('/customers', function () {
+// $Customers= customer::all();
+// echo "<pre>";
+// print_r($Customers);
 
-});
+// });
 
 
 Route::get('/', function () {

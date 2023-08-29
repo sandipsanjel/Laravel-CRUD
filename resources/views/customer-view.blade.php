@@ -48,7 +48,7 @@
         <a href="{{ route('customer.create') }}">
             <button class="btn btn-primary d-line-block m-2 float-right"> Add </button>
         </a>
-        <a href="{{ route('customer.delete') }}">
+        {{-- <a href="{{ route('customer.delete') }}"> --}}
             <button class="btn btn-danger d-line-block m-2 float-right"> Move To Trash </button>
         </a>
         <table class="table">
